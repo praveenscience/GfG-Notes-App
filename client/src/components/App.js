@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Header from "./Header/Header";
+import Login from "./Login/Login";
+import Welcome from "./Welcome/Welcome";
 
 export default class App extends Component {
   state = {
@@ -11,35 +13,7 @@ export default class App extends Component {
         <Header dark={true} className="Header">
           GfG Notes App
         </Header>
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <p>
-                {this.state.User
-                  ? `User Logged In as ${this.state.User.Name}.`
-                  : "User Logged Out."}
-              </p>
-              <button
-                className="btn btn-primary btn-sm"
-                onClick={e => {
-                  e.preventDefault();
-                  this.setState({ User: { Name: "Praveen" } });
-                }}
-              >
-                Login
-              </button>
-              <button
-                className="btn btn-secondary btn-sm ml-2"
-                onClick={e => {
-                  e.preventDefault();
-                  this.setState({ User: null });
-                }}
-              >
-                Logout
-              </button>
-            </div>
-          </div>
-        </div>
+        {this.state.User ? <Welcome /> : <Login />}
       </div>
     );
   }
