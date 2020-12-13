@@ -6,7 +6,23 @@ import WelcomeHeader from "./WelcomeHeader";
 
 class Welcome extends Component {
   state = {
-    Notes: ["Note 1", "Note 2", "Note 3"]
+    Notes: [
+      {
+        NoteID: "hello",
+        Title: "Hello World",
+        Desc: "Hello World Hello World Hello World Hello World Hello World"
+      },
+      {
+        NoteID: "faq",
+        Title: "Frequently Asked Questions",
+        Desc: "What questions are you asking frequently"
+      },
+      {
+        NoteID: "gfg",
+        Title: "GeeksforGeeks",
+        Desc: "Hello GeeksforGeeks"
+      }
+    ]
   };
   render() {
     const { User, handleLogout } = this.props;
