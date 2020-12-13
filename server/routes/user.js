@@ -68,5 +68,13 @@ user.post("/register", (req, res) => {
     });
   }
 });
+user.post("/logout", (req, res) => {
+  req.session.destroy();
+  res.status(202).json({
+    Error: false,
+    Success: true,
+    Message: "User successfully logged out."
+  });
+});
 
 module.exports = user;
