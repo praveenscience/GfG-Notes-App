@@ -7,6 +7,25 @@ export default class App extends Component {
   state = {
     User: null
   };
+  handleAuth = (username, password) => {
+    const Users = {
+      Praveen: "Hello123",
+      Bhooshan: "dark456",
+      Rishav: "ris2000",
+      Shivam: "password",
+      Rajan: "rks12345",
+      Isabel: "coolcats123",
+      Shashi: "akcd@123"
+    };
+    if (!Users[username]) {
+      // User not found
+    } else if (Users[username] && Users[username] !== password) {
+      // Password is wrong.
+    } else {
+      // Password is right!
+      this.setState({ User: { Name: username } });
+    }
+  };
   render() {
     return (
       <div className="App">
