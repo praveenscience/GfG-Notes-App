@@ -1,9 +1,7 @@
 const app = require("express").Router();
-const user = require("./user");
 
 app.get("/", (req, res) => {
-  res.json("Welcome to /api!");
+  res.json("Welcome to /api/user!");
 });
-app.use("/user", user);
 
 module.exports = app;
