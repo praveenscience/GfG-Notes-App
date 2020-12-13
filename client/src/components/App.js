@@ -5,7 +5,8 @@ import Welcome from "./Welcome/Welcome";
 
 export default class App extends Component {
   state = {
-    User: null
+    User: null,
+    Error: null
   };
   handleAuth = (username, password) => {
     const Users = {
@@ -19,11 +20,22 @@ export default class App extends Component {
     };
     if (!Users[username]) {
       // User not found
+      this.setState({
+        User: null,
+        Error: "User not found!"
+      });
     } else if (Users[username] && Users[username] !== password) {
       // Password is wrong.
+      this.setState({
+        User: null,
+        Error: "Wrong Password!"
+      });
     } else {
       // Password is right!
-      this.setState({ User: { Name: username } });
+      this.setState({
+        User: { Name: username },
+        Error: null
+      });
     }
   };
   render() {
