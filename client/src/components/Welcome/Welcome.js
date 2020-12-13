@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import List from "./List";
+import Note from "./Note";
 import WelcomeHeader from "./WelcomeHeader";
 
 class Welcome extends Component {
@@ -23,7 +24,9 @@ class Welcome extends Component {
               setCurrentNote={this.setCurrentNote}
             />
           </div>
-          <div className="col-9">Right Window</div>
+          <div className="col-9">
+            <Note CurrentNote={this.state.CurrentNote} />
+          </div>
         </div>
       </div>
     );
