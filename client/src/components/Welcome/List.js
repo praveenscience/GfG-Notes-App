@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 
-const List = ({ Notes }) => (
+const List = ({ Notes, match }) => (
   <>
     <h3>Notes List</h3>
     <div className="list-group">
@@ -9,7 +9,8 @@ const List = ({ Notes }) => (
         <Link
           to={"/note-" + key}
           className={
-            "list-group-item list-group-item-action" + (false ? " active" : "")
+            "list-group-item list-group-item-action" +
+            (+match.params.NoteID.replace("note-", "") === key ? " active" : "")
           }
           key={key}
         >
