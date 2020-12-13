@@ -1,6 +1,6 @@
 import React from "react";
 
-const Login = () => {
+const Login = ({ handleAuth }) => {
   return (
     <div className="container">
       <div className="row">
