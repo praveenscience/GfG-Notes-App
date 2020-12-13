@@ -19,19 +19,16 @@ export default class App extends Component {
       Shashi: "akcd@123"
     };
     if (!Users[username]) {
-      // User not found
       this.setState({
         User: null,
         Error: "User not found!"
       });
     } else if (Users[username] && Users[username] !== password) {
-      // Password is wrong.
       this.setState({
         User: null,
         Error: "Wrong Password!"
       });
     } else {
-      // Password is right!
       this.setState({
         User: { Name: username },
         Error: null
@@ -47,7 +44,7 @@ export default class App extends Component {
         {this.state.User ? (
           <Welcome User={this.state.User} />
         ) : (
-          <Login handleAuth={this.handleAuth} />
+          <Login handleAuth={this.handleAuth} Error={this.state.Error} />
         )}
       </div>
     );
