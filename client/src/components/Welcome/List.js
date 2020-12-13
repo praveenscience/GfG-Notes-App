@@ -1,23 +1,23 @@
 import React from "react";
+import { Link, withRouter } from "react-router-dom";
 
-const List = ({ Notes, setCurrentNote, CurrentNote }) => (
+const List = ({ Notes }) => (
   <>
     <h3>Notes List</h3>
-    <ul className="list-group">
+    <div className="list-group">
       {Notes.map((item, key) => (
-        <li
+        <Link
+          to={"/note-" + key}
           className={
-            "list-group-item list-group-item-action" +
-            (CurrentNote === key ? " active" : "")
+            "list-group-item list-group-item-action" + (false ? " active" : "")
           }
           key={key}
-          onClick={() => setCurrentNote(key)}
         >
           {item}
-        </li>
+        </Link>
       ))}
-    </ul>
+    </div>
   </>
 );
 
-export default List;
+export default withRouter(List);
