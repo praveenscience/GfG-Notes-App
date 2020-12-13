@@ -1,7 +1,44 @@
-const app = require("express").Router();
+const user = require("express").Router();
 
-app.get("/", (req, res) => {
-  res.json("Welcome to /api/user!");
+// Dummy list of users for now.
+const Users = {
+  Praveen: "Hello123",
+  Bhooshan: "dark456",
+  Rishav: "ris2000",
+  Shivam: "password",
+  Rajan: "rks12345",
+  Isabel: "coolcats123",
+  Shashi: "akcd@123"
+};
+
+user.get("/", (req, res) => {
+  res.json(req.session.User);
+});
+user.post("/login", (req, res) => {
+  const { username, password } = req.body;
+  if (!Users[username]) {
+    req.session.destroy();
+    res.status(404).json({
+      Error: true,
+      Success: false,
+      Message: "User not found!"
+    });
+  } else if (Users[username] && Users[username] !== password) {
+    req.session.destroy();
+    res.status(403).json({
+      Error: true,
+      Success: false,
+      Message: "Invalid username and password!"
+    });
+  } else {
+    res.json({
+      Error: false,
+      Success: true,
+      Message: {
+        Name: username
+      }
+    });
+  }
 });
 
-module.exports = app;
+module.exports = user;
