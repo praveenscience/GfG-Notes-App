@@ -13,7 +13,7 @@ const Notes = [
     NoteID: "emmet",
     Title: 'Emmett "Doc" Brown',
     Desc:
-      'Doctor **Emmett** Lathrop "Doc" **Brown** is the inventor of the DeLorean time machine. At various points in time, Doc helps Marty restore the space-time continuum and reverse the changes that were caused by **time travel**.',
+      'Doctor **Emmett** Lathrop "Doc" **Brown** is the inventor of the DeLorean time machine. At various points in time, Doc helps Marty restore the space-time continuum and reverse the changes that were caused by **time travel**.\n\n![Emmet Brown](https://i.imgur.com/61E2wTcm.jpg)',
     User: "Praveen"
   },
   {
