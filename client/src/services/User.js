@@ -5,3 +5,5 @@ export const AuthUser = (username, password) =>
 
 export const RegUser = (username, password) =>
   Axios.post("/api/user/register", { username, password });
+
+export const LogoutUser = () => Axios.post("/api/user/logout");

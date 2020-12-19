@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AuthUser, RegUser } from "../services/User";
+import { AuthUser, LogoutUser, RegUser } from "../services/User";
 import Header from "./Header/Header";
 import Login from "./Login/Login";
 import Welcome from "./Welcome/Welcome";
@@ -47,7 +47,9 @@ export default class App extends Component {
   };
   handleLogout = e => {
     e.preventDefault();
-    this.setState({ User: null });
+    LogoutUser().then(() => {
+      this.setState({ User: null });
+    });
   };
   render() {
     return (
