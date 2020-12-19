@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MDEditor from "@uiw/react-md-editor";
 import { Sluggify } from "../../helpers/Helpers";
+import { CreateNote } from "../../services/Notes";
 
 const NewNote = ({ User }) => {
   User = User.Name;
@@ -9,7 +10,9 @@ const NewNote = ({ User }) => {
   const NoteID = Sluggify(Title);
   const handleSubmit = e => {
     e.preventDefault();
-    console.log({ NoteID, Desc, Title, User });
+    CreateNote(NoteID, Desc, Title, User).then(res => {
+      console.log(res);
+    });
   };
   const handleReset = e => {
     e.preventDefault();
