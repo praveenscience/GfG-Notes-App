@@ -27,7 +27,7 @@ class Welcome extends Component {
               <List Notes={this.state.Notes} User={User} />
             </div>
             <div className="col-9">
-              <Note Notes={this.state.Notes} />
+              <Note Notes={this.state.Notes} User={User} />
             </div>
           </Route>
         </div>

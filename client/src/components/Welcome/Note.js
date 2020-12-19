@@ -1,13 +1,14 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import NewNote from "./_NewNote";
 import NoteContent from "./_NoteContent";
 import NoteWelcome from "./_NoteWelcome";
 
-const Note = ({ Notes }) => {
+const Note = ({ User, Notes }) => {
   return (
     <Switch>
       <Route path="/" exact={true} component={NoteWelcome} />
-      <Route path="/new">Add New Note</Route>
+      <Route path="/new" render={rp => <NewNote {...rp} User={User} />} />
       <Route
         path="/:NoteID"
         render={rp => <NoteContent {...rp} Notes={Notes} />}
