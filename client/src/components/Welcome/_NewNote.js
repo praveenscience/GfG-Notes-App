@@ -3,15 +3,15 @@ import MDEditor from "@uiw/react-md-editor";
 import { Sluggify } from "../../helpers/Helpers";
 import { CreateNote } from "../../services/Notes";
 
-const NewNote = ({ User }) => {
+const NewNote = ({ User, RefreshNotes }) => {
   User = User.Name;
   const [Desc, setDesc] = useState("");
   const [Title, setTitle] = useState("");
   const NoteID = Sluggify(Title);
   const handleSubmit = e => {
     e.preventDefault();
-    CreateNote(NoteID, Desc, Title, User).then(res => {
-      console.log(res);
+    CreateNote(NoteID, Desc, Title, User).then(() => {
+      RefreshNotes();
     });
   };
   const handleReset = e => {
