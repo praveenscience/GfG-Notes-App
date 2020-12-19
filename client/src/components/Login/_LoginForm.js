@@ -31,7 +31,7 @@ class LoginForm extends Component {
           {
             Id: "Password",
             Type: "password",
-            Desc: "Put your password that you might have forgotten"
+            Desc: "Put your password that you might have forgotten."
           }
         ].map((fg, key) => (
           <FormGroup
