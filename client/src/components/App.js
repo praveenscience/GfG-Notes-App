@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { AuthUser } from "../services/User";
 import Header from "./Header/Header";
 import Login from "./Login/Login";
 import Welcome from "./Welcome/Welcome";
@@ -9,31 +10,19 @@ export default class App extends Component {
     Error: null
   };
   handleAuth = (username, password) => {
-    const Users = {
-      Praveen: "Hello123",
-      Bhooshan: "dark456",
-      Rishav: "ris2000",
-      Shivam: "password",
-      Rajan: "rks12345",
-      Isabel: "coolcats123",
-      Shashi: "akcd@123"
-    };
-    if (!Users[username]) {
-      this.setState({
-        User: null,
-        Error: "User not found!"
+    AuthUser(username, password)
+      .then(res => {
+        this.setState({
+          User: res.data.Message,
+          Error: null
+        });
+      })
+      .catch(error => {
+        this.setState({
+          User: null,
+          Error: error.response.data.Message
+        });
       });
-    } else if (Users[username] && Users[username] !== password) {
-      this.setState({
-        User: null,
-        Error: "Wrong Password!"
-      });
-    } else {
-      this.setState({
-        User: { Name: username },
-        Error: null
-      });
-    }
   };
   handleLogout = e => {
     e.preventDefault();
