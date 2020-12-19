@@ -25,6 +25,7 @@ const FormGroup = ({
         checked={Checked}
         defaultChecked={defaultChecked}
         aria-describedby={Id + "Help"}
+        autoComplete={Type.toLowerCase() === "password" ? "cc-pass" : "meh"}
       />
       {Desc && (
         <small id={Id + "Help"} className="form-text text-muted">
