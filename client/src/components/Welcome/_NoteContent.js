@@ -18,10 +18,12 @@ const NoteContent = ({ match, Notes }) => {
       </>
     );
   }
-  const { Title, Desc, User } = Note;
+  const { NoteID, Title, Desc, User } = Note;
   return (
     <>
-      <h3 className="mb-3">{Title}</h3>
+      <h3 className="mb-3">
+        {Title} <code>({NoteID})</code>
+      </h3>
       <p>
         <em>Created by {User}.</em>
       </p>
