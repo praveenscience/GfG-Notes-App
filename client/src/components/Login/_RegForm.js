@@ -3,8 +3,8 @@ import FormGroup from "../Forms/FormGroup";
 
 class RegForm extends Component {
   state = {
-    Username: "",
-    Password: ""
+    RegUsername: "",
+    RegPassword: ""
   };
   handleChange = e => {
     this.setState({
@@ -13,7 +13,7 @@ class RegForm extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
-    this.props.handleReg(this.state.Username, this.state.Password);
+    this.props.handleReg(this.state.RegUsername, this.state.RegPassword);
   };
   render() {
     return (
@@ -27,12 +27,12 @@ class RegForm extends Component {
         )}
         {[
           {
-            Id: "Username",
+            Id: "RegUsername",
             Type: "text",
             Desc: "Put your username in a good case."
           },
           {
-            Id: "Password",
+            Id: "RegPassword",
             Type: "password",
             Desc: "Create a new password and forget it."
           }

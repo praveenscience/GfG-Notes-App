@@ -17,7 +17,8 @@ export default class App extends Component {
         this.setState({
           User: res.data.Message,
           AuthError: null,
-          RegError: null
+          RegError: null,
+          RegSuccess: null
         });
       })
       .catch(error => {
