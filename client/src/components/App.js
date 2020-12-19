@@ -16,7 +16,8 @@ export default class App extends Component {
       .then(res => {
         this.setState({
           User: res.data.Message,
-          AuthError: null
+          AuthError: null,
+          RegError: null
         });
       })
       .catch(error => {
@@ -31,6 +32,7 @@ export default class App extends Component {
       .then(res => {
         this.setState({
           User: null,
+          AuthError: null,
           RegError: null,
           RegSuccess: res.data.Message
         });
