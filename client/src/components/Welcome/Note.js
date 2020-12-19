@@ -7,6 +7,7 @@ const Note = ({ Notes }) => {
   return (
     <Switch>
       <Route path="/" exact={true} component={NoteWelcome} />
+      <Route path="/new">Add New Note</Route>
       <Route
         path="/:NoteID"
         render={rp => <NoteContent {...rp} Notes={Notes} />}
