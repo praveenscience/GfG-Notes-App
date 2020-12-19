@@ -35,5 +35,22 @@ const Notes = [
 note.get("/", (req, res) => {
   res.json(Notes);
 });
+note.post("/", (req, res) => {
+  const { NoteID, Title, Desc, User } = req.body;
+  if (Notes.find(n => n.NoteID === NoteID)) {
+    res.status(409).json({
+      Error: true,
+      Success: false,
+      Message: "Note ID already taken!"
+    });
+  } else {
+    Notes.push({ NoteID, Title, Desc, User });
+    res.status(201).json({
+      Error: false,
+      Success: true,
+      Message: `Note ${Title} created successfully!`
+    });
+  }
+});
 
 module.exports = note;
