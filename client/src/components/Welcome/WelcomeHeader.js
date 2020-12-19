@@ -10,6 +10,9 @@ const WelcomeHeader = ({ User, handleLogout }) => {
           <Link to="/" className="btn btn-primary btn-sm mr-2">
             Home
           </Link>
+          <Link to="/new" className="btn btn-outline-primary btn-sm mr-2">
+            New Note
+          </Link>
           <button className="btn btn-danger btn-sm" onClick={handleLogout}>
             Logout
           </button>
