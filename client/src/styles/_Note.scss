@@ -1,0 +1,15 @@
+.NewNote {
+  h3 {
+    input {
+      font-size: 1em;
+      border: none;
+      margin-left: 5px;
+      border-bottom: 1px solid #ccc;
+      &:focus,
+      &:active {
+        box-shadow: none;
+        outline: none;
+      }
+    }
+  }
+}
