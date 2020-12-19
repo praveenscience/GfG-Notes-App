@@ -18,7 +18,7 @@ class RegForm extends Component {
   render() {
     return (
       <form className="LoginForm" onSubmit={this.handleSubmit}>
-        <h3 className="mb-3">Login</h3>
+        <h3 className="mb-3">Register</h3>
         {this.props.Error && (
           <div className="alert alert-danger">{this.props.Error}</div>
         )}
@@ -40,7 +40,7 @@ class RegForm extends Component {
           <FormGroup
             {...fg}
             Value={this.state[fg.Id]}
-            Label={fg.Id}
+            Label={fg.Id.replace("Reg", "")}
             key={key}
             onChange={this.handleChange}
           />
