@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AuthUser, LogoutUser, RegUser } from "../services/User";
+import { AuthUser, CheckUser, LogoutUser, RegUser } from "../services/User";
 import Header from "./Header/Header";
 import Login from "./Login/Login";
 import Welcome from "./Welcome/Welcome";
@@ -11,6 +11,13 @@ export default class App extends Component {
     RegError: null,
     RegSuccess: null
   };
+  componentDidMount() {
+    CheckUser().then(res => {
+      this.setState({
+        User: res.data
+      });
+    });
+  }
   handleAuth = (username, password) => {
     AuthUser(username, password)
       .then(res => {
