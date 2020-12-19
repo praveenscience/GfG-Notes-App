@@ -61,13 +61,14 @@ user.post("/register", (req, res) => {
         Message:
           "Both username and password must be at least 4 characters long."
       });
+    } else {
+      Users[username] = password;
+      res.status(201).json({
+        Error: false,
+        Success: true,
+        Message: "Created user " + username + "."
+      });
     }
-    Users[username] = password;
-    res.status(201).json({
-      Error: false,
-      Success: true,
-      Message: "Created user " + username + "."
-    });
   } else {
     res.status(409).json({
       Error: true,
