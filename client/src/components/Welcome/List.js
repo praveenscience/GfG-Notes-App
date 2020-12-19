@@ -20,6 +20,11 @@ const List = ({ Notes, match }) => (
           {note.Title}
         </Link>
       ))}
+      {Notes.length === 0 && (
+        <span className="list-group-item">
+          No notes found! Feel free to add one!
+        </span>
+      )}
     </div>
   </>
 );
