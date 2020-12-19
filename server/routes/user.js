@@ -54,6 +54,14 @@ user.post("/login", (req, res) => {
 user.post("/register", (req, res) => {
   const { username, password } = req.body;
   if (!Users[username]) {
+    if (username.length < 4 || password.length < 4) {
+      res.status(400).json({
+        Error: true,
+        Success: false,
+        Message:
+          "Both username and password must be at least 4 characters long."
+      });
+    }
     Users[username] = password;
     res.status(201).json({
       Error: false,
