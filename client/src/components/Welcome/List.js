@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 
-const List = ({ Notes, match }) => {
+const List = ({ Notes, match, User }) => {
   const [Filter, setFilter] = useState("All");
   const Filters = ["All", "My Notes"];
   const handleFilter = e => {
@@ -25,7 +25,13 @@ const List = ({ Notes, match }) => {
         ))}
       </div>
       <div className="list-group">
-        {Notes.map((note, key) => (
+        {Notes.filter(note => {
+          if (Filter === "My Notes") {
+            return note.User === User.Name;
+          } else {
+            return true;
+          }
+        }).map((note, key) => (
           <Link
             to={"/note-" + key}
             className={
