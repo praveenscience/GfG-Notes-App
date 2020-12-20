@@ -18,10 +18,29 @@ app.get("/seed", (req, res) => {
           table.timestamp("born").defaultTo(db.fn.now());
         })
         .then(() => {
-          res.status(201).json("Table just born");
+          db.schema.hasTable("notes").then(exists => {
+            if (!exists) {
+              db.schema
+                .createTable("notes", table => {
+                  table.increments("note_id").primary();
+                  table.string("title");
+                  table.string("desc");
+                  table.integer("u_id").unsigned().notNullable();
+                  table.foreign("u_id").references("id").inTable("users");
+                  table.timestamp("wrote").defaultTo(db.fn.now());
+                })
+                .then(() => {
+                  res
+                    .status(201)
+                    .json("Users were born and Notes were written");
+                });
+            } else {
+              res.json("Already written");
+            }
+          });
         });
     } else {
-      res.json("Table already born");
+      res.json("Users already born");
     }
   });
 });
