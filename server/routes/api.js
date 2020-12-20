@@ -13,8 +13,9 @@ app.get("/seed", (req, res) => {
       db.schema
         .createTable("users", table => {
           table.increments("id").primary();
-          table.string("name");
-          table.string("pass");
+          table.string("username");
+          table.string("password");
+          table.string("fullname");
           table.timestamp("born").defaultTo(db.fn.now());
         })
         .then(() => {
