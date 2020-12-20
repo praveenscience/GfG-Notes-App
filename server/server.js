@@ -5,6 +5,18 @@ const api = require("./routes/api");
 const app = express();
 const port = 3100;
 
+const db = require("knex")({
+  client: "pg",
+  connection: {
+    host: "localhost",
+    user: "postgres",
+    password: "Hello@45",
+    database: "gfg-notes-app"
+  }
+});
+
+app.set("db", db);
+
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(
