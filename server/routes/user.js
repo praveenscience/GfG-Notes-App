@@ -1,16 +1,5 @@
 const user = require("express").Router();
 
-// Dummy list of users for now.
-const Users = {
-  Praveen: "Hello123",
-  Bhooshan: "dark456",
-  Rishav: "ris2000",
-  Shivam: "password",
-  Rajan: "rks12345",
-  Isabel: "coolcats123",
-  Shashi: "akcd@123"
-};
-
 user.get("/", (req, res) => {
   if (!!req.session.User) {
     res.json(req.session.User);
@@ -52,29 +41,31 @@ user.post("/login", (req, res) => {
   }
 });
 user.post("/register", (req, res) => {
-  const { username, password } = req.body;
-  if (!Users[username]) {
-    if (username.length < 4 || password.length < 4) {
-      res.status(400).json({
-        Error: true,
-        Success: false,
-        Message:
-          "Both username and password must be at least 4 characters long."
-      });
-    } else {
-      Users[username] = password;
-      res.status(201).json({
-        Error: false,
-        Success: true,
-        Message: "Created user " + username + "."
-      });
-    }
+  const db = req.app.get("db");
+  const { username, password, fullname } = req.body;
+  if (
+    !username ||
+    !password ||
+    !fullname ||
+    username.length < 4 ||
+    password.length < 4 ||
+    fullname.length < 4
+  ) {
+    res.json("Wrong Input");
   } else {
-    res.status(409).json({
-      Error: true,
-      Success: false,
-      Message: "User " + username + " already exists."
-    });
+    db.from("users")
+      .where({ username })
+      .then(rows => {
+        if (rows.length === 0) {
+          db("users")
+            .insert({ username, password, fullname })
+            .then(() => {
+              res.json("Created user");
+            });
+        } else {
+          res.json("User already exists");
+        }
+      });
   }
 });
 user.post("/logout", (req, res) => {
